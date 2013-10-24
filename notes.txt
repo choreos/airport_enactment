@@ -1,0 +1,16 @@
+
+It was needed to create 15 cookbooks.
+
+Each cookbook has very similar code.
+So we generated a lot of code replication!
+This could be avoided by creating a Chef LWRP.
+But it is more advanced Chef feature,
+not intended to be used by beginners.
+
+To replace the $NAME:
+sophisticated bash script was need to avoid manual typing on 15 recipes.
+generate_and_replace_names.sh
+
+Heterogeneity: all services are JAR services.
+But if there was another kind of package,
+the deployed would have to write a completely different set of recipes.
