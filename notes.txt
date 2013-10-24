@@ -2,15 +2,34 @@
 It was needed to create 15 cookbooks.
 
 Each cookbook has very similar code.
-So we generated a lot of code replication!
+So we generated a lot of code replication*!
 This could be avoided by creating a Chef LWRP.
 But it is more advanced Chef feature,
-not intended to be used by beginners.
+not intended to be used by beginners. 
 
 To replace the $NAME:
 sophisticated bash script was need to avoid manual typing on 15 recipes.
-generate_and_replace_names.sh
+generate.sh
+
+* If something change on template, we have to regenerate all the cookbooks.
+And we loose all the manual editions on these cookbooks.
+
+Package URL data must be replace by hand.
+It is like this on chor spec too.
+However, having to open and edit multiple "default.rb" files
+is somehow more tiring and error-prone.
+
+So, first idea to avoid manual editing: entering several times the command:
+sed -i 's|$PACKAGE_URL|http://sd-49168.dedibox.fr/....jar|' airportbuscompany/attributes/default.rb 
+
+But it was too boring and dangerous too...
+So I changed the generate script to read from user the package url and replace on the proper place.
+Note, the URLs could be written in generate.sh as the names are.
+However, it would require manipulate more complex data structures in shell script, such as dictionaries.
+I preferred to avoid it.
+Note usually developers are indeed not so shell script hackers (actually, sysadmins are more used with it).
 
 Heterogeneity: all services are JAR services.
 But if there was another kind of package,
 the deployed would have to write a completely different set of recipes.
+

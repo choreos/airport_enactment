@@ -8,6 +8,9 @@ do
    cd $name
    sed -i "s/\$NAME/$name/g" attributes/default.rb
    sed -i "s/\$NAME/$name/g" recipes/default.rb
+   echo "Provide the package URI to $name, plz"
+   read package_url
+   sed -i "s|\$PACKAGE_URL|$package_url|" attributes/default.rb
    cd ..
 done
 
