@@ -99,7 +99,9 @@ and it is easier to do this with shell script than with a compiled program.
 This ContextSender project is in this repository.
 It is a very small project with no external dependencies and just 3 java classes:
 the class that makes the work, one exception class, and a main class to parse command-line arguments.
-The generated jar has only 6.1kB.
+The generated jar has only 6.1kB. 
+However the ContextSender class has a really complicated code,
+that requires from its author knowledge on SOAP and on the native low level Java SOAP API.
 
 Successful example:
 java -jar context_sender.jar http://192.168.56.101:8004/airport airportbuscompany airportbuscompany http://192.168.56.101:8023/airportbuscompany
