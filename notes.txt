@@ -1,4 +1,6 @@
 
+== 24th October, afternoon ==
+
 It was needed to create 15 cookbooks.
 
 Each cookbook has very similar code.
@@ -32,4 +34,41 @@ Note usually developers are indeed not so shell script hackers (actually, sysadm
 Heterogeneity: all services are JAR services.
 But if there was another kind of package,
 the deployed would have to write a completely different set of recipes.
+
+== 24th October, night ==
+ 
+Now I have the cookbooks.
+Let's try to run them on nodes.
+First we need to bootstrap the nodes...
+I could use Chef Server, but I'll follow the approach we are using in EE
+and that I'm trying with Radar, that is Chef solo.
+
+I'll take the bootstrap script that I've prepare to Radar
+and that was based on the bootstrap script in the EE.
+
+Here I conceive the follow procedure to the deployer:
+1) it logs on the target VM
+2) sudo apt-get install git
+3) checkout thales_enactment
+4) edit node.json *
+5) chef-solo
+So the service is installed and running
+
+* the step 4 is the planning phase.
+When editing node.json the deployer is deciding which services will be hosted in which nodes.
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
 
