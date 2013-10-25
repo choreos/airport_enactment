@@ -43,22 +43,20 @@ First we need to bootstrap the nodes...
 I could use Chef Server, but I'll follow the approach we are using in EE
 and that I'm trying with Radar, that is Chef solo.
 
-I'll take the bootstrap script that I've prepare to Radar
-and that was based on the bootstrap script in the EE.
-
 Here I conceive the follow procedure to the deployer:
 1) it logs on the target VM
 2) sudo apt-get install git
 3) checkout thales_enactment
-4) edit solo.rb (maybe it can avoided with $HOME, but I was not able to do it)
-5) edit node.json *
-6) chef-solo
+4) install_chef.sh
+5) edit solo.rb (maybe it can avoided with $HOME, but I was not able to do it)
+6) edit node.json *
+7) chef-solo
 So the service is installed and running
 
-* the step 5 is the planning phase.
+* the step 6 is the planning phase.
 When editing node.json the deployer is deciding which services will be hosted in which nodes.
 
-Maybe theses 6 steps could be more automated with Capistrano.
+Maybe theses 7 steps could be more automated with Capistrano.
 But it involves learning one more tool,
 and it still would require some manual edition of a base Capistrano script,
 to set target VMs IPs, and the mapping of services per nodes.
