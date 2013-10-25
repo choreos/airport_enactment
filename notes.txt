@@ -106,7 +106,15 @@ The generated jar has only 6.1kB.
 Successful example:
 java -jar context_sender.jar http://192.168.56.101:8004/airport airportbuscompany airportbuscompany http://192.168.56.101:8023/airportbuscompany
 
- 
+bind_services.sh done!
+This script contains the (implicit) dependency graph and the invocations to setInvocationAddress on services (using context_send.jar).
+The first part of the script are variables to be manually filled by the deployer (before executing the script) with the URIs of the just deployed services.
+
+Now the choreography is properly configured and running :)
+
+
+
+
 
 
 
