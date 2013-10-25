@@ -50,12 +50,77 @@ Here I conceive the follow procedure to the deployer:
 1) it logs on the target VM
 2) sudo apt-get install git
 3) checkout thales_enactment
-4) edit node.json *
-5) chef-solo
+4) edit solo.rb (maybe it can avoided with $HOME, but I was not able to do it)
+5) edit node.json *
+6) chef-solo
 So the service is installed and running
 
-* the step 4 is the planning phase.
+* the step 5 is the planning phase.
 When editing node.json the deployer is deciding which services will be hosted in which nodes.
+
+Maybe theses 6 steps could be more automated with Capistrano.
+But it involves learning one more tool,
+and it still would require some manual edition of a base Capistrano script,
+to set target VMs IPs, and the mapping of services per nodes.
+
+Anyway, the deployer must perform in sequence, for each target VM, the 5 steps.
+EE would do some more parallel execution.
+Here we assume the deployer will not use concurrent programming on their scripts.
+Most of developers are not used to it. 
+It is nonsense on shell script and even quite limited on Python and Ruby.
+
+Services (airport and airportbuscompany) installed and running!
+Now to verify if the service is accessible I need to remember the port service (spec data).
+For airport is 8004, so I could see the airport WSDL on
+http://192.168.56.101:8004/airport?wsdl
+
+SERVICE BINDING
+(setInvocationAddress)
+
+Now things get harder...
+The input data to service binding encompass the service URIs that we have just retrieved.
+Therefore it is not possible to ( prepare a "just-run" script to bind services ) before deploying services.
+So, we need to build some kind of template script that will be filled with the services URIs.
+But there is another problem: we need perform a SOAP invocation!
+It is absolutely awkward having to write a SOAP envelope by hand,
+and not trivial to perform such invocation with shell script (but if you write the SOAP envelope in a file!)
+
+So we need something to generate SOAP envelopes to invoke setInvocationAddress,
+and this thing must receive the service URI as input.
+We will choose make a Java program to do this (let's take the code of SoapContextSender of EE).
+It will not only build the SOAP envelope but also invoke the service.
+
+This java program (ContextSender) is intended to work like:
+java -jar context_sender.jar <dependent uri> <dependency role> <dependency name> <dependency URI>
+(just as the SoapContextSender class works)
+
+And a shell script will hold the logic of deciding which services will be invoked with which arguments.
+Rationale to this separation: remember this script will need to be filled before execution,
+and it is easier to do this with shell script than with a compiled program.
+
+This ContextSender project is in this repository.
+It is a very small project with no external dependencies and just 3 java classes:
+the class that makes the work, one exception class, and a main class to parse command-line arguments.
+The generated jar has only 6.1kB.
+
+Successful example:
+java -jar context_sender.jar http://192.168.56.101:8004/airport airportbuscompany airportbuscompany http://192.168.56.101:8023/airportbuscompany
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
