@@ -113,33 +113,3 @@ Now the choreography is properly configured and running :)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
