@@ -1,0 +1,26 @@
+THALES ENACTMENT
+
+Deploying the Airport choreography (WP6) without using the Enactment Engine.
+
+The airport choreography and the Enactment engine are devloped in the contexto of the CHOReOS project.
+
+Leonardo Leite
+
+
+
+
+HOWTO
+
+For each target VM:
+  1) login on the target VM
+  2) sudo apt-get install git
+  3) checkout thales_enactment
+  4) install_chef.sh
+  5) cp -R thales_enactment/chef-solo/cookbooks/* chef-solo/cookbooks
+  6) edit solo.rb 
+  7) edit node.json *
+  8) run chef-solo
+9) edit the bind_service.sh, provinding the services IPs.
+10) run bind_service.sh
+
+
