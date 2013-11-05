@@ -1,21 +1,21 @@
 #!/bin/bash
 
-# define URIs here, plz
-airport=''
-airportbuscompany=''
-airportdisplayactuatorsaggregator=''
-airportinfraredsensorsaggregator='' 
-aiportnoisesensorsaggregator='' 
-aiportpressuresensorsaggregator='' 
-airportsignactuatorsaggregator='' 
-airportspeakeractuatorsaggregator='' 
-bookableamenity='' 
-luggagehandlingcompany='' 
-middisplayactuatorsaggregator='' 
-midlocationsensorsaggregator='' 
-midmicrophonesensorsaggregator='' 
-securitycompany='' 
-standandgatemanagement=''
+# define URIs here, filling the IP field, plz
+airport='http://IP:8004/airport'
+airportbuscompany='http://IP:8023/airportbuscompany'
+airportdisplayactuatorsaggregator='http://IP:8006/airportdisplayactuatorsaggregator'
+airportinfraredsensorsaggregator='http://IP:8007/airportinfraredsensorsaggregator' 
+aiportnoisesensorsaggregator='http://IP:8008/aiportnoisesensorsaggregator' 
+aiportpressuresensorsaggregator='http://IP:8024/aiportpressuresensorsaggregator' 
+airportsignactuatorsaggregator='http://IP:8010/airportsignactuatorsaggregator' 
+airportspeakeractuatorsaggregator='http://IP:8011/airportspeakeractuatorsaggregator' 
+bookableamenity='http://IP:8013/bookableamenity' 
+luggagehandlingcompany='http://IP:8017/luggagehandlingcompany' 
+middisplayactuatorsaggregator='http://IP:8018/middisplayactuatorsaggregator' 
+midlocationsensorsaggregator='http://IP:8019/midlocationsensorsaggregator' 
+midmicrophonesensorsaggregator='http://IP:8020/midmicrophonesensorsaggregator' 
+securitycompany='http://IP:8021/securitycompany' 
+standandgatemanagement='http://IP:8022/standandgatemanagement'
 
 #airport
 java -jar context_sender.jar $airport airportbuscompany airportbuscompany $airportbuscompany

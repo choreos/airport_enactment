@@ -112,6 +112,49 @@ The first part of the script are variables to be manually filled by the deployer
 
 Now the choreography is properly configured and running :)
 
+== 05/11 deploying ==
+
+12h30
+* no create multiple instance on EC2 console
+* could not log on created machines (they did not had name) // created by the webconsole
+  so I create machines using EE.
+* copy/paste vim
+* missing step: copy cookbooks to cookbook folder: 
+$cd chef-solo/cookbooks
+$cp -R ~/thales_enactment/chef-solo/cookbooks/* .
+* missing ',' when manually editing json files
+* verifying success with ps -ef | grep java
+* one of the 15 services is not running after $chef-solo (service-aiportpressuresensorsaggregator.jar)
+* running chef-solo again
+port already used...
+trying in another node
+ops, it was not aiportpressuresensorsaggregator
+it was airportbuscompany that was missin
+I think I changed airportbuscompany for aiportpressuresensorsaggregator in the beginning
+without chef idempotence it would be much harder to fix this problem!
+and a lot people would use just shell script to do this job
+13h12
+* template of bind_service could provie the almost full uri, just missing ip
+but now I have to retrieve port numbers too
+* improper copy of ubuntu@host
+* almost missing replacing ednpoints
+* it did not work in the 1st attempt
+* verifying running services by checking wsld files
+* I shouldn't used ?wsdl in the service_bind script!
+* all context sent without errors! : )
+13h31
+
+Deploy com EE:
+13:39:12 - 13:43:53 ~ 4min
+
+====
+
+More points:
+
+* these scripts were intended to a "single deployment"; no chor update.
+* some steps in the procedure were improved during deployment, mainly the bind_service.sh uris template
+
+
 
 
 
